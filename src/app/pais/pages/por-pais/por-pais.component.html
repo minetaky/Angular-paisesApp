@@ -22,7 +22,7 @@
     No se encontró nada con el termino de busqueda: {{ termino }}
 </div>
 
-<div *ngIf="!hayError" class="row">
+<div *ngIf="paises.length > 0" class="row">
     <div class="col">
 
         <table class="table table-hover">
@@ -37,13 +37,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1 </th>
-                    <th>Bandera </th>
-                    <th>Nombre </th>
-                    <th>12234234 </th>
+                <tr *ngFor=" let pais of paises; let i = index">
+                    <th>{{ i + 1 }} </th>
                     <th>
-                        <a href="/pais/cri">Ver...</a>
+                        <img class="small-flag" [src]="pais.flags.png">
+                    </th>
+                    <th> {{ pais.name.common }} </th>
+                    <th>{{pais.population | number }} </th>
+                    <th>
+                        <a [routerLink]="[ '/pais', pais.cca2 ]">Ver...</a>
                     </th>
                 </tr>
             </tbody>
