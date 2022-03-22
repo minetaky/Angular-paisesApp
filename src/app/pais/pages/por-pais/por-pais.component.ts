@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs';
 import { Country } from '../../interfaces/pais-interface';
 import { PaisService } from '../../services/pais.service';
 
@@ -38,5 +39,7 @@ export class PorPaisComponent  {
     this.hayError = false;
     //TODO: crear sugerencias
   }
+
+
 
 }

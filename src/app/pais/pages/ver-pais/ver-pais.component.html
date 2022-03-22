@@ -1,1 +1,66 @@
-<p>ver-pais works!</p>
+<div *ngIf="!pais; else divPais"
+    class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>    
+
+    
+        
+        <div  *ngFor="let p of pais">
+            <div class="row">
+                <div class="col-12">
+                    <h1>País: <small>{{ p.name.common}}</small></h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <h3>Bandera</h3>
+                    <img [src]="p.flags.png" class="img-thumbnail" />
+                </div>
+            </div>
+            
+
+            <div class="col">
+                <h3>Información</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Poblacion: </strong>{{ p.population | number}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>cca2: </strong>{{ p.cca2}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Region: </strong>{{ p.region}}
+                    </li>
+                </ul>
+            </div>
+
+            <h3>Traducciones</h3>
+            <div class="row">
+                <div class="col">
+                    <span class="badge bg-primary mr-1" > {{ p.translations['spa'].official }} - {{ p.translations['spa'].common }}  </span>
+                    <span class="badge bg-primary mr-1"> {{ p.translations['ara'].official }} - {{ p.translations['ara'].common }}  </span>
+                    <span class="badge bg-primary mr-1"> {{ p.translations['fra'].official }} - {{ p.translations['fra'].common }}  </span>
+                    <span class="badge bg-primary mr-1"> {{ p.translations['ita'].official }} - {{ p.translations['ita'].common }}  </span>
+                    <span class="badge bg-primary mr-1"> {{ p.translations['jpn'].official }} - {{ p.translations['jpn'].common }}  </span>
+                    <span class="badge bg-primary mr-1"> {{ p.translations['kor'].official }} - {{ p.translations['kor'].common }}  </span>
+                    <span class="badge bg-primary mr-1"> {{ p.translations['rus'].official }} - {{ p.translations['rus'].common }}  </span>
+                    <span class="badge bg-primary mr-1"> {{ p.translations['urd'].official }} - {{ p.translations['urd'].common }}  </span>
+
+                </div>
+
+            </div>
+
+            <pre class="nt-t">
+                {{p | json}}
+            </pre>
+            
+        </div>
+    
+
+</ng-template>
+
+
+
